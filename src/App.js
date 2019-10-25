@@ -1,37 +1,38 @@
 import React from 'react';
 import './App.css';
 
-
+//Для добавления получателя платежа дописываем сюда + добавляем картинку в public/images/{index}.png
 const MobileService = [
-  { name: "МТС", zip: "0" },
-  { name: "Билайн", zip: "1" },
-  { name: "Мегафон", zip: "2" },
+  { name: "МТС"},
+  { name: "Билайн"},
+  { name: "Мегафон"}
     ];
 
 
  class ButtonsDisplay extends React.Component {
   constructor() {
     super();
-    this.state = {
-    activePlace: 0
-    };
+    this.state = { activePlace: '' };
   }
   render() {
-    const activePlace = this.state.activePlace;
 
-    return (
-      <div className="App">
+   // var hidePanel = this.state.activePlace === false ? "red ":"green";
+
+       return (
+      <div className="App"   
+      >
+
            {MobileService.map((place, index) => (
-           <button className="button13"
+           <button className="button"
             key={index}
             onClick={() => {
-              this.setState({ activePlace: index });
-              alert (index)
-            }}
+              return  this.state.activePlace ===false ? 
+                      this.setState({ activePlace: true }) : 
+                      this.setState({ activePlace: false })
+              }}
           >
             <img src={`/images/${index}.png`} className="App-logo" alt="logo" />
-
-            {place.name}
+           <h2>{place.name}</h2> 
           </button>
         ))}
       </div>
@@ -59,6 +60,7 @@ class UserForm extends React.Component {
         return sum<1001 & sum>0;
     }
     validatePhone(phone){
+        //тут можно усложнить регулярку для телефона, но пока для всего что прошло через паттерн TRUE
         return true;
     }
     onSumChange(e) {
@@ -68,69 +70,88 @@ class UserForm extends React.Component {
     }
     onPhoneChange(e) {
         var val = e.target.value;
-        console.log(val);
         var valid = this.validatePhone(val);
         this.setState({phone: val, phoneValid: valid});
     }
 
+    
+
     handleSubmit(e) {
         e.preventDefault();
         if(this.state.phoneValid ==true && this.state.sumValid==true){
-            alert("Номер: " + this.state.phone + " Сумма: " + this.state.sum);
+            alert("Успешно "+"Номер: " + this.state.phone + " Сумма: " + this.state.sum);
         } 
         if(this.state.phoneValid !=true ) {
             alert("Проверьте ваш номер: " + this.state.phone);
         }
 
         if( this.state.sumValid!=true) {
-            alert("Сумма не более 1000 рублей " + this.state.sum);
+            alert("Уточните сумму (от 1 до 1000) " + this.state.sum);
         }
         
     }
 
     render() {
-        var phoneColor = this.state.phoneValid===true?"green":"red";
-        var sumColor = this.state.sumValid===true?"green":"red";
+
+       {/* var phoneColor = this.state.phoneValid===true?"green":"red";
+            var sumColor = this.state.sumValid===true?"green":"red";*/}
 
         return (
+        
+
             <form onSubmit={this.handleSubmit}>
-                <p>
-                    <label>Номер телефона:</label>
-                    <input type="tel" value={this.state.phone} 
-                        onChange={this.onPhoneChange} 
-                        style={{borderColor:phoneColor}} 
-                        placeholder={'8-XXX-XXX-XX-XX'}
-                        minLength={11} 
-                        maxLength={11} 
-                        required />
-               
-                    <label>Сумма:</label>
-                    <input type="tel" 
-                        value={this.state.sum} 
-                        onChange={this.onSumChange}  
-                        style={{borderColor:sumColor}} 
-                        placeholder={'не более 1000'}
-                        maxLength={4} 
-                        minLength={1} 
-                        required/>
-                </p>
-                <input type="submit" value="Подтвeрдить" />
-            </form>
+                <table>
+                      <tr>
+                        <td>
+                        <label>Номер телефона:</label>
+                        </td>
+                        <td>
+                        <input type="tel" value={this.state.phone} 
+                            onChange={this.onPhoneChange} 
+                            //style={{borderColor:phoneColor}}
+                            pattern={'[0-9]{11}'}
+                            placeholder={'8XXXXXXXXXX'}
+                            minLength={11} 
+                            maxLength={11} 
+                            required />
+                      </td>
+                      </tr>
+                      <tr>   
+                          <td>
+                              <label>Сумма:</label>
+                          </td>
+                          <td>
+                          <input type="tel" 
+                              value={this.state.sum} 
+                              pattern={'[0-9]{1-4}'}
+                              onChange={this.onSumChange}  
+                          // style={{borderColor:sumColor}} 
+                              placeholder={'не более 1000'}
+                              maxLength={4} 
+                              minLength={1} 
+                              required/>
+                        </td>
+                    </tr>
+                </table>
+                <input type="submit" className="button" value="Подтвeрдить" /> 
+                </form>
         );
     }
 }
 
+
+
 function App() {
   return (
     <div className="App">
+
       <header className="App-header">
+
         <h1>Оплати мобильную связь</h1>
        
         < ButtonsDisplay />
-
-        <  UserForm  />
+        < UserForm/>
      
-      
       </header>
     </div>
   );
