@@ -11,6 +11,8 @@ export class UserForm extends React.Component {
     this.onPhoneChange = this.onPhoneChange.bind(this);
     this.onSumChange = this.onSumChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.chooseService = this.chooseService.bind(this)
+
   }
   validateSum(sum) {
     return sum < 1001 & sum > 0;
@@ -41,12 +43,18 @@ export class UserForm extends React.Component {
       alert("Уточните сумму (от 1 до 1000) " + this.state.sum);
     }
   }
+
+  chooseService () {
+       this.props.steps()
+  }
+  
   render() {
     { /* var phoneColor = this.state.phoneValid===true?"green":"red";
              var sumColor = this.state.sumValid===true?"green":"red";*/
     }
     return (<form onSubmit={this.handleSubmit}>
       <table>
+        <tbody>
         <tr>
           <td>
             <label>Номер телефона:</label>
@@ -67,8 +75,12 @@ export class UserForm extends React.Component {
               placeholder={'не более 1000'} maxLength={4} minLength={1} required />
           </td>
         </tr>
+        </tbody>
       </table>
-      <input type="submit" className="button" value="Подтвeрдить" />
+      <p></p>
+      
+      <input type="submit" className="button" value="Подтвeрдить" onClick={this.chooseService} />
+
     </form>);
   }
 }

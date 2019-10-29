@@ -1,29 +1,28 @@
 import React from 'react';
 import { MobileService } from './App';
-
-
 export class ButtonsDisplay extends React.Component {
 
-    constructor() {
-      super();
-      this.state = { activePlace: '' };
-      this.nextPanel = this.nextPanel.bind(this)
+    constructor(props) {
+      super(props);
+      //this.state = { activePlace: '' };
+      this.chooseService = this.chooseService.bind(this)
     }
 
-    nextPanel () {
-      this.setState({ activePlace: '25' });
-      console.log (this.state.activePlace)
-
+    chooseService () {
+        console.log ('клик')
+        this.props.steps()  
+       
     }
 
   render() {
+
     return (<div className="App">
 
       {MobileService.map((place, index) => (
 
-        <button className="button" key={index} 
+        <button className="button" key={index} id='index'
         
-        onClick={this.nextPanel}>
+        onClick={this.chooseService}>
 
             <img src={`/images/${index}.png`} className="App-logo" alt="logo" />
         
@@ -33,4 +32,38 @@ export class ButtonsDisplay extends React.Component {
     </div>);
   }
 }
+
+
+/*
+export class ButtonsDisplay extends React.Component {
+
+  constructor() {
+    super();
+    this.state = { choosePayment: '' };
+    
+    
+  }
+
+
+  render() {
+    return (<div className="App">
+
+        {MobileService.map((place, index) => ( 
+
+            <button className="button" key={index} 
+          
+                onClick={(e) => {this.setState ({choosePayment: place.name })
+                console.log (this.state.choosePayment)
+            }}>
+
+            <img src={`/images/${index}.png`} className="App-logo" alt="logo" />
+        
+            <h2>{place.name}</h2>
+
+            </button>))}
+            
+        </div>);
+  }
+}
+*/
 
