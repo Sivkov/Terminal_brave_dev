@@ -12,6 +12,8 @@ export class UserForm extends React.Component {
         this.onSumChange = this.onSumChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.chooseService = this.chooseService.bind(this)
+        this.stepBack = this.stepBack.bind(this)
+
      }
 
     validateSum(sum) {
@@ -52,17 +54,21 @@ export class UserForm extends React.Component {
     }
 
       chooseService () {
-          this.props.steps()
+          this.props.steps( 1, this.props.operator, this.state.phone, this.state.sum)
+          
       }
+
+      stepBack() {
+          this.props.steps(-1)
+      }
+
+
   
       render() {
-    { /* var phoneColor = this.state.phoneValid===true?"green":"red";
-             var sumColor = this.state.sumValid===true?"green":"red";*/
-      }
+  
           return (
-          
-          <form onSubmit={this.handleSubmit}>
-              <h1>Оплати мобильную связь</h1>
+           <form onSubmit={this.handleSubmit}>
+              <h1>Выбран оператор {this.props.operator}</h1>
               <table>
                   <tbody>
                       <tr>
@@ -94,7 +100,9 @@ export class UserForm extends React.Component {
                   </tbody>
                 </table>
                 <p></p>
+                <input type="submit" className="button" value="Назад"  onClick={this.stepBack}/>
                 <input type="submit" className="button" value="Подтвeрдить" />
-            </form>);
+            </form>
+         );
   }
 }

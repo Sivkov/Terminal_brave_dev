@@ -10,17 +10,11 @@ export class ButtonsDisplay extends React.Component {
     }
 
     chooseService (e) {
-
         this.setState({
-          payReciever: 34
+           payReciever: e.target.alt
         })
-
-        alert ("id кнокпи" + e.target.id );
-        console.log ('id кнопки'+e.target.id)
-               
-        this.props.steps()
- 
-    }
+        this.props.steps(1, e.target.alt )
+     }
 
   render() {
 
@@ -29,21 +23,21 @@ export class ButtonsDisplay extends React.Component {
     <div>
        <h1>Оплати мобильную связь</h1>
        
-        <button className="button" id='0' value="МТС"
+        <button className="button" id='0' 
             onClick={this.chooseService}>
-            <img src={`/images/0.png`} className="App-logo" alt="logo" />     
+            <img src={`/images/0.png`} className="App-logo" alt="MTC" />     
             <h2>MTC</h2>
         </button>
 
         <button className="button" id='1' 
             onClick={this.chooseService}>
-            <img src={`/images/1.png`} className="App-logo" alt="logo" />     
+            <img src={`/images/1.png`} className="App-logo" alt="Билайн" />     
             <h2>Билайн</h2>
         </button>
 
         <button className="button" id='2' 
             onClick={this.chooseService}>
-            <img src={`/images/2.png`} className="App-logo" alt="logo" />     
+            <img src={`/images/2.png`} className="App-logo" alt="Мегафон" />     
             <h2>Мегафон</h2>
         </button>
 
