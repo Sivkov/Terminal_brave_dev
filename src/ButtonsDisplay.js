@@ -1,34 +1,53 @@
 import React from 'react';
-import { MobileService } from './App';
+
+
 export class ButtonsDisplay extends React.Component {
 
     constructor(props) {
-      super(props);
-      //this.state = { activePlace: '' };
-      this.chooseService = this.chooseService.bind(this)
+        super(props);
+        this.state = { payReciever: '' };
+        this.chooseService = this.chooseService.bind(this)
     }
 
-    chooseService () {
-        console.log ('клик')
-        this.props.steps()  
-       
+    chooseService (e) {
+
+        this.setState({
+          payReciever: 34
+        })
+
+        alert ("id кнокпи" + e.target.id );
+        console.log ('id кнопки'+e.target.id)
+               
+        this.props.steps()
+ 
     }
 
   render() {
 
-    return (<div className="App">
+    return (
+     
+    <div>
+       <h1>Оплати мобильную связь</h1>
+       
+        <button className="button" id='0' value="МТС"
+            onClick={this.chooseService}>
+            <img src={`/images/0.png`} className="App-logo" alt="logo" />     
+            <h2>MTC</h2>
+        </button>
 
-      {MobileService.map((place, index) => (
+        <button className="button" id='1' 
+            onClick={this.chooseService}>
+            <img src={`/images/1.png`} className="App-logo" alt="logo" />     
+            <h2>Билайн</h2>
+        </button>
 
-        <button className="button" key={index} id='index'
-        
-        onClick={this.chooseService}>
+        <button className="button" id='2' 
+            onClick={this.chooseService}>
+            <img src={`/images/2.png`} className="App-logo" alt="logo" />     
+            <h2>Мегафон</h2>
+        </button>
 
-            <img src={`/images/${index}.png`} className="App-logo" alt="logo" />
-        
-            <h2>{place.name}</h2>
 
-      </button>))}
     </div>);
   }
 }
@@ -65,5 +84,29 @@ export class ButtonsDisplay extends React.Component {
         </div>);
   }
 }
+
+      const MobileService = [
+  { name: "МТС", id : 0},
+  { name: "Билайн", id : 1},
+  { name: "Мегафон", id : 2}
+  //{ name: "ТELE2", id : 3}
+    ];
+
+
+       {MobileService.map((place, index) => (
+
+        <button className="button" key={index} id={index} value={this.index}
+        
+        onClick={this.chooseService}>
+
+            <img src={`/images/${index}.png`} className="App-logo" alt="logo" />
+        
+            <h2>{place.name}</h2>
+
+      </button>))}
+
+
+
+
 */
 
