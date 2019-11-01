@@ -3,10 +3,10 @@ import React from 'react';
 export class UserForm extends React.Component {
     constructor(props) {
         super(props);
-        var phone = props.phone;
-        var phoneIsValid = this.validatePhone(phone);
-        var sum = props.sum;
-        var sumIsValid = this.validateSum(sum);
+        let phone = props.phone;
+        let phoneIsValid = this.validatePhone(phone);
+        let sum = props.sum;
+        let sumIsValid = this.validateSum(sum);
         this.state = { phone: phone, sum: sum, phoneValid: phoneIsValid, sumValid: sumIsValid };
         this.onPhoneChange = this.onPhoneChange.bind(this);
         this.onSumChange = this.onSumChange.bind(this);
@@ -21,7 +21,7 @@ export class UserForm extends React.Component {
     }
 
     validatePhone(phone) {
-    //тут можно усложнить регулярку для телефона, но пока для всего что прошло через паттерн TRUE
+    //тут можно усложнить регулярку для телефона, но пока для всего что прошло через паттерн -  TRUE
         return true;
     }
 
@@ -89,7 +89,7 @@ export class UserForm extends React.Component {
                           <td>
                               <input type="tel" 
                                   value={this.state.sum} 
-                                  pattern={'[0-9]{1-4}'} 
+                                  pattern={'[0-9]{1,4}'} 
                                   onChange={this.onSumChange}
                                   placeholder={'не более 1000'} 
                                   maxLength={4} 
@@ -100,7 +100,7 @@ export class UserForm extends React.Component {
                   </tbody>
                 </table>
                 <p></p>
-                <input type="submit" className="button" value="Назад"  onClick={this.stepBack}/>
+                <input type="button" className="button" value="Назад"  onClick={this.stepBack}/>
                 <input type="submit" className="button" value="Подтвeрдить" />
             </form>
          );

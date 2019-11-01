@@ -15,17 +15,15 @@ class App extends React.Component {
 
    nextPanel (step, mobile, phone, sum) {
 
-      console.log (this.state.sum)
+      
       this.setState(prevState => {
           return {
           payActive: prevState.payActive + step
         }
       })
       this.setState({operator : mobile, phone: phone, sum: sum })
-
-      console.log ("сумма"+this.state.sum)
-
-          }
+     
+  }
   
   render() {
 
@@ -46,9 +44,7 @@ class App extends React.Component {
 
                 operator={this.state.operator}
                 phone={this.state.phone}
-                sum={this.state.sum}
-                
-                />  : '' }
+                sum={this.state.sum} />  : '' }
 
                 {/* возврат в шаг первый*/}
             </header>
