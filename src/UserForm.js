@@ -14,7 +14,7 @@ export class UserForm extends React.Component {
         this.chooseService = this.chooseService.bind(this)
         this.stepBack = this.stepBack.bind(this)
 
-     }
+    }
 
     validateSum(sum) {
     return sum < 1001 & sum > 0;
