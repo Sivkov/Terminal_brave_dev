@@ -75,11 +75,14 @@ export class UserForm extends React.Component {
                           <td><label>Номер телефона:</label>
                           </td>
                           <td>
-                              <input type="tel" value={this.state.phone} onChange={this.onPhoneChange}
+                              <input type="tel" 
+                              className="row"
+                              onChange={this.onPhoneChange}
                                   pattern={'[0-9]{11}'} 
                                   placeholder={'8XXXXXXXXXX'} 
                                   minLength={11} 
                                   maxLength={11} 
+                                  value={this.state.phone}
                                   required />
                           </td>
                       </tr>
@@ -88,10 +91,11 @@ export class UserForm extends React.Component {
                           </td>
                           <td>
                               <input type="tel" 
-                                  value={this.state.sum} 
+                                className="row"
                                   pattern={'[0-9]{1,4}'} 
                                   onChange={this.onSumChange}
                                   placeholder={'не более 1000'} 
+                                  value={this.state.sum}
                                   maxLength={4} 
                                   minLength={1} 
                                   required />
@@ -106,3 +110,5 @@ export class UserForm extends React.Component {
          );
   }
 }
+
+

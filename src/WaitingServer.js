@@ -15,13 +15,15 @@ export class WaitingServer extends React.Component {
         clearTimeout ();
         
         setTimeout( function () {
-            this.props.steps(-2)}.bind(this), 4000 
+            if (this.props.sum.length<3) this.props.steps(-1, this.props.operator, this.state.phone, this.state.sum);
+            if (this.props.sum.length>2) this.props.steps(-2);
+            }.bind(this), 4000 
         );
         
     };
         /* 
         Здесь делаем запрос к API и по реультатам ответа присваиваем 
-        operationSuccess ( по умолчанию loading) "true" или  "false",  но поскольку сервера нет - ставим закглушки и 
+        operationSuccess ( по умолчанию loading) "true" или  "false",  но поскольку сервера нет - ставим заглушки и 
         имитируем работу удаленного сервера. Сумма 100 и более успешно, менее  100 -что-то не так.
 
         componentDidMount() {
@@ -53,7 +55,7 @@ export class WaitingServer extends React.Component {
 
                 {this.state.operationSuccess == 'true'  ? <h3>Всё успешно!</h3> : ""}
                 
-                {this.state.operationSuccess == 'false'  ? <h3>Что-то пошло не так.</h3> : ""}
+                {this.state.operationSuccess == 'false'  ? <h3>Попробуйте еще раз.</h3> : ""}
             </div>
         );
     }
