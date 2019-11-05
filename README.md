@@ -10,13 +10,16 @@
 В репозитории должна быть ссылка на демо приложения.
 
 ИТОГО:
+![общий вид](https://github.com/Sivkov/brave_tests/blob/master/t1.png)
 Расшириние списка получателей через ButtonDisplay.js.
-
-
+![](https://github.com/Sivkov/brave_tests/blob/master/t4.png)
 Анимация через 'animate-css-styled-components'.
 Маска 'react-input-mask' валидация js+html.
 Эмуляция запроса - через fetch() и POST запрос дополнения в комментариях к файлу.
 На экран оплаты добавлена кнопка "назад" для удобства пользователя.
+![новая кнопка](https://github.com/Sivkov/brave_tests/blob/master/t3.png)
 Основные размеры экранов проверил через devtools.
+![другие размеры экранов](https://github.com/Sivkov/brave_tests/blob/master/t5.png)
+
 
 
