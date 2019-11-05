@@ -1,15 +1,18 @@
 import React from 'react';
+import { Pulse} from 'animate-css-styled-components';
+import { Tada } from 'animate-css-styled-components';
 
 export class WaitingServer extends React.Component {
     
     constructor() {
         super();
         this.state = {operationSuccess : "loading"};
+
      
         setTimeout(function () {           
             if (this.props.sum.length>2) this.setState({ operationSuccess: 'true' });
             if (this.props.sum.length<3) this.setState({ operationSuccess: 'false' });
-                }.bind(this), 2500 
+                }.bind(this), 3000 
         );
 
         clearTimeout ();
@@ -17,9 +20,10 @@ export class WaitingServer extends React.Component {
         setTimeout( function () {
             if (this.props.sum.length<3) this.props.steps(-1, this.props.operator, this.state.phone, this.state.sum);
             if (this.props.sum.length>2) this.props.steps(-2);
-            }.bind(this), 4000 
+            }.bind(this), 5000 
         );
-        
+
+          
     };
         /* 
         Здесь делаем запрос к API и по реультатам ответа присваиваем 
@@ -48,15 +52,30 @@ export class WaitingServer extends React.Component {
     render () {
         return (
             <div className="App">
-                <h3> Статус платежа по номеру: {"+7("+this.props.phone.slice(1,4)+")"+
-                this.props.phone.slice(4,7)+'-'+this.props.phone.slice(7,9)+'-'+this.props.phone.slice(9,11)}  </h3>
+                <h3> Статус платежа по номеру: {this.props.phone}  </h3>
+                 
+                {this.state.operationSuccess == 'loading'  ?  <Waiting /> : ""} 
 
-                {this.state.operationSuccess == 'loading'  ?  <h3>Идет обработка вашего запроса...</h3> : ""} 
-
-                {this.state.operationSuccess == 'true'  ? <h3>Всё успешно!</h3> : ""}
+                {this.state.operationSuccess == 'true'  ? 
+                    <Tada duration="0.5s" delay="0.5s"><h3>Всё успешно!</h3></Tada> : ""
+                }
                 
-                {this.state.operationSuccess == 'false'  ? <h3>Попробуйте еще раз.</h3> : ""}
+                {this.state.operationSuccess == 'false' ?  
+                    <h3>Порпробуйте еще раз!</h3> : ""
+                }
             </div>
         );
     }
 }
+
+function Waiting () {
+    return (
+        
+            <Pulse duration="1s" delay="1s" iterationCount="3">
+                <h3>Идет обработка вашего запроса...</h3>
+            </Pulse>
+        )
+  }
+
+ 
+

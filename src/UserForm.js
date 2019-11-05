@@ -1,4 +1,60 @@
 import React from 'react';
+import styled from 'styled-components'
+import InputMask from 'react-input-mask';
+
+const Table = styled.table`
+    width: 100%
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    table-layout: fixed;   
+`
+
+const Button = styled.button`
+  display: inline-block;
+  width: 15em;
+  font-size: 80%;
+  color: white;
+  text-shadow:none;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.1;
+  white-space: pre-line;
+ 
+  border: 1px solid;
+  border-color: none;
+  border-radius: 6px;
+  outline: none;
+  background: none;
+  box-shadow: inset rgba(156, 137, 137, 0.5) 1px 1px;
+
+  :hover {
+  background: rgba(156, 137, 137, 0.5)  
+}
+    :active {
+  color: rgb(255,255,255);
+  border-color: black ;
+}
+ `
+
+const Input= styled.input`
+
+ font-size: 80%;
+ color:'black'
+
+`
+
+const divStyle = { 
+    fontSize: '80%', 
+    color:'black'
+}
+
+const formStyle = { 
+    textAlign: 'start'    
+}
 
 export class UserForm extends React.Component {
     constructor(props) {
@@ -13,6 +69,7 @@ export class UserForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.chooseService = this.chooseService.bind(this)
         this.stepBack = this.stepBack.bind(this)
+
 
     }
 
@@ -40,7 +97,7 @@ export class UserForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         if (this.state.phoneValid == true && this.state.sumValid == true) {
-            //alert("Успешно " + "Номер: " + this.state.phone + " Сумма: " + this.state.sum);
+
         this.chooseService()
         }
 
@@ -63,49 +120,44 @@ export class UserForm extends React.Component {
       }
 
 
-  
       render() {
   
           return (
-           <form onSubmit={this.handleSubmit}>
+           <form onSubmit={this.handleSubmit} style={formStyle}>
               <h1>Выбран оператор {this.props.operator}</h1>
-              <table>
-                  <tbody>
-                      <tr>
-                          <td><label>Номер телефона:</label>
+              <Table>
+                  <tbody>              
+                        <tr>
+                          <td>
+                              <label>Номер телефона:</label>
                           </td>
                           <td>
-                              <input type="tel" 
-                              className="row"
-                              onChange={this.onPhoneChange}
-                                  pattern={'[0-9]{11}'} 
-                                  placeholder={'8XXXXXXXXXX'} 
-                                  minLength={11} 
-                                  maxLength={11} 
-                                  value={this.state.phone}
-                                  required />
+                                <InputMask {...this.props} mask="+7(999)999-99-99" maskChar=" " style={divStyle}
+                                onChange={this.onPhoneChange}
+                                pattern={'[0-9\(\)\+-]{16}'} 
+                                placeholder={'+7(999)999-99-99'} 
+                                required />                                 
                           </td>
                       </tr>
                       <tr>
-                          <td><label>Сумма:</label>
+                          <td><label>Сумма к оплате:</label>
                           </td>
                           <td>
-                              <input type="tel" 
-                                className="row"
-                                  pattern={'[0-9]{1,4}'} 
-                                  onChange={this.onSumChange}
-                                  placeholder={'не более 1000'} 
-                                  value={this.state.sum}
-                                  maxLength={4} 
-                                  minLength={1} 
-                                  required />
-                          </td>
+                                <Input type="tel" 
+                                    pattern={'[0-9]{1,4}'} 
+                                    onChange={this.onSumChange}
+                                    placeholder={'не более 1000 рублей'} 
+                                    maxLength={4} 
+                                    minLength={1} 
+                                    required>
+                                </Input>
+                            </td>
                       </tr>
-                  </tbody>
-                </table>
+                     </tbody>
+                </Table>
                 <p></p>
-                <input type="button" className="button" value="Назад"  onClick={this.stepBack}/>
-                <input type="submit" className="button" value="Подтвeрдить" />
+                <Button type="button" onClick={this.stepBack}><h2>Назад</h2></Button>
+                <Button type="submit"><h2>Подтвeрдить</h2></Button>
             </form>
          );
   }

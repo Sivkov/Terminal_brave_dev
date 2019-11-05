@@ -1,9 +1,24 @@
 import React from 'react';
-import './App.css';
+import styled from 'styled-components'
 import { UserForm } from './UserForm';
 import { ButtonsDisplay } from './ButtonsDisplay';
 import { WaitingServer } from './WaitingServer';
 
+
+const Header = styled.header`
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+`
+
+const AppWrapper = styled.div`
+    text-align: center;
+`
 
 
 class App extends React.Component {
@@ -24,8 +39,8 @@ class App extends React.Component {
   
   render() {
       return (
-        <div className="App" >
-            <header className="App-header">
+        <AppWrapper >
+            <Header>
                 {/*выбор оператора*/}
                 {this.state.payActive== 1 ? < ButtonsDisplay steps={this.nextPanel} />  :  '' }
 
@@ -36,8 +51,8 @@ class App extends React.Component {
                 {this.state.payActive==  3 ? < WaitingServer 
                   steps={this.nextPanel}  operator={this.state.operator}
                   phone={this.state.phone} sum={this.state.sum} />  : '' }
-            </header>
-        </div>
+            </Header>
+        </AppWrapper>
       )
   }
 }
