@@ -2,6 +2,7 @@
   "name": "terminal",
   "version": "0.1.0",
   "private": true,
+  "homepage":"https://github.com/Sivkov/terminal_demo",
   "dependencies": {
     "animate-css-styled-components": "^1.0.2",
     "react": "^16.11.0",
