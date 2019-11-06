@@ -26,9 +26,13 @@
 ![другие размеры экранов](https://github.com/Sivkov/brave_tests/blob/master/t5.png)
 
 Ссылка на ДЕМО:
+видео
 <https://youtu.be/dvZeP_reQvk>
 
+само приложение в работе
+<sivkov.github.io/terminal_demo>
 ### Жду вашего решения.
+
 
 
 
