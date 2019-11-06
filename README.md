@@ -9,7 +9,7 @@
 Исходный код должен быть выложен на Github.com.
 В репозитории должна быть ссылка на демо приложения.
 
-ИТОГО:
+###ИТОГО:
 Общий вид экрана на три оператора:
 ![общий вид](https://github.com/Sivkov/brave_tests/blob/master/t1.png)
 
@@ -26,8 +26,9 @@
 ![другие размеры экранов](https://github.com/Sivkov/brave_tests/blob/master/t5.png)
 
 Ссылка на ДЕМО:
+<https://youtu.be/dvZeP_reQvk>
 
-Жду вашего решения.
+###Жду вашего решения.
 
 
 
