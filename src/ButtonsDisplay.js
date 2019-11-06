@@ -73,6 +73,7 @@ export class ButtonsDisplay extends React.Component {
             <h2>Мегафон</h2>
         </Button>
 
+
     </div>);
   }
 }
