@@ -30,7 +30,7 @@
 <https://youtu.be/dvZeP_reQvk>
 
 само приложение в работе
-<sivkov.github.io/terminal_demo>
+<https://sivkov.github.io/terminal_demo>
 ### Жду вашего решения.
 
 
