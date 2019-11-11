@@ -45,11 +45,12 @@ export class ButtonsDisplay extends React.Component {
     }
 
     chooseService (e) {
-        this.setState({
-           payReciever: e.target.alt
-        })
-        this.props.steps(1, e.target.alt )
-     }
+      this.setState({
+         payReciever: e.currentTarget.getAttribute('data-key')
+      })
+
+      this.props.steps(1,e.currentTarget.getAttribute('data-key') )
+   }
 
   render() {
 
@@ -58,18 +59,18 @@ export class ButtonsDisplay extends React.Component {
     <div>
        <h1>Оплати мобильную связь</h1>
        
-        <Button  onClick={this.chooseService}>
-            <Img src={`/images/0.png`} className="App-logo" alt="MTC" />  
+        <Button data-key='МТС' onClick={this.chooseService}   >
+            <Img src={`http://puer18.ru/terminal_demo/images/0.png`} className="App-logo" alt="MTC" />  
             <h2>MTC</h2>
         </Button>
 
-        <Button onClick={this.chooseService}>
-            <Img src={`/images/1.png`} className="App-logo" alt="Билайн" />    
+        <Button data-key='Билайн' onClick={this.chooseService} >
+            <Img src={`http://puer18.ru/terminal_demo/images/1.png`} className="App-logo" alt="Билайн" />    
             <h2>Билайн</h2>
         </Button>
 
-        <Button  onClick={this.chooseService}>
-            <Img src={`/images/2.png`} className="App-logo" alt="Мегафон" />  
+        <Button  data-key='Мегафон' onClick={this.chooseService} >
+            <Img src={`http://puer18.ru/terminal_demo/images/2.png`} className="App-logo" alt="Мегафон" />  
             <h2>Мегафон</h2>
         </Button>
 
