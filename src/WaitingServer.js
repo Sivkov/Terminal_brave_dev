@@ -10,7 +10,7 @@ export class WaitingServer extends React.Component {
 
      
         setTimeout(function () {           
-            if (this.props.sum.length>2) this.setState({ operationSuccess: 'true' });
+            if (this.props.sum.length>1) this.setState({ operationSuccess: 'true' });
             if (this.props.sum.length<3) this.setState({ operationSuccess: 'false' });
                 }.bind(this), 3000 
         );
